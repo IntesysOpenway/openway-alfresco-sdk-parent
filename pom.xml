@@ -54,6 +54,7 @@
 		<xstream.version>1.2.2</xstream.version>
 		<xpp3.version>1.1.3_8</xpp3.version>
 		<dependency.surf.version>6.3</dependency.surf.version>
+		<spring.version>3.2.14.RELEASE</spring.version>
 
 		<!-- Plugins Version -->
 		<assembly-plugin.version>2.6</assembly-plugin.version>
@@ -387,6 +388,18 @@
 				<groupId>xpp3</groupId>
 				<artifactId>xpp3</artifactId>
 				<version>${xpp3.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
 				<scope>provided</scope>
 			</dependency>
 
