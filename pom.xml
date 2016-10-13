@@ -423,6 +423,7 @@
 				<artifactId>alfresco-repository</artifactId>
 				<version>${alfresco.version}</version>
 				<classifier>tests</classifier>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>postgresql</groupId>
