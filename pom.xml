@@ -74,7 +74,7 @@
 
 	<scm>
 		<!-- URL to GIT folder that contains this pom -->
-		<developerConnection>scm:git:git@gitlab.intesys.it/openway/openway-alfresco-sdk-parent</developerConnection>
+		<developerConnection>scm:git:git@gitlab.intesys.it:openway/openway-alfresco-sdk-parent.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
