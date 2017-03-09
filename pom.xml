@@ -14,7 +14,7 @@
 
 	<name>OpenWay Alfresco SDK parent</name>
 	<description>Base di sviluppo per un progetto Openway Alfresco basato su Alfresco Maven SDK</description>
-	
+
 	<organization>
 		<name>Intesys Openway Srl</name>
 		<url>http://www.iopenway.it/</url>
@@ -60,6 +60,8 @@
 		<xpp3.version>1.1.3_8</xpp3.version>
 		<dependency.surf.version>6.3</dependency.surf.version>
 		<spring.version>3.2.14.RELEASE</spring.version>
+		<barcode4j.version>2.1</barcode4j.version>
+		<barbecue.version>1.5-beta1</barbecue.version>
 
 		<!-- Plugins Version -->
 		<assembly-plugin.version>2.6</assembly-plugin.version>
@@ -220,6 +222,22 @@
 						<artifactId>joda-time</artifactId>
 					</exclusion>
 				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.barcode4j</groupId>
+				<artifactId>barcode4j</artifactId>
+				<version>${barcode4j.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>avalon-framework</groupId>
+						<artifactId>avalon-framework-impl</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.barbecue</groupId>
+				<artifactId>barbecue</artifactId>
+				<version>${barbecue.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.alfresco.surf</groupId>
