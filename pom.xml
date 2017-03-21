@@ -643,6 +643,10 @@
 						<!-- <licenseName>lgpl_v3</licenseName> -> ogni progetto deve dichiarare la sua licenza (esistono dei template predefiniti) -->
 						<processStartTag>==============================LICENSE=============================</processStartTag>
 						<processEndTag>============================LICENSE-END===========================</processEndTag>
+						<excludes>
+							<exclude>**/*.config.xml</exclude>
+							<exclude>**/amp/config/**/*.js</exclude>
+						</excludes>
 					</configuration>
 					<executions>
 						<execution>
