@@ -63,6 +63,7 @@
 		<barcode4j.version>2.1</barcode4j.version>
 		<barbecue.version>1.5-beta1</barbecue.version>
 		<zxing.version>3.2.0</zxing.version>
+		<mybatis.version>3.2.7</mybatis.version>
 
 		<!-- Plugins Version -->
 		<assembly-plugin.version>2.6</assembly-plugin.version>
@@ -437,6 +438,12 @@
 				<groupId>com.google.zxing</groupId>
 				<artifactId>core</artifactId>
 				<version>${zxing.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<!-- Test dependencies -->
