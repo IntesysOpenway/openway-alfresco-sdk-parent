@@ -197,6 +197,10 @@
 						<artifactId>bctsp-jdk14</artifactId>
 					</exclusion>
 					<exclusion>
+			            <groupId>org.apache.lucene</groupId>
+			            <artifactId>lucene-core</artifactId>
+			        </exclusion>
+					<exclusion>
 						<!-- Esclusa perchè non trovata in Maven -->
 						<groupId>org.olap4j</groupId>
 						<artifactId>olap4j</artifactId>
