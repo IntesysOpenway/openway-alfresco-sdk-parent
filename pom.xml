@@ -198,9 +198,9 @@
 						<artifactId>bctsp-jdk14</artifactId>
 					</exclusion>
 					<exclusion>
-			            <groupId>org.apache.lucene</groupId>
-			            <artifactId>lucene-core</artifactId>
-			        </exclusion>
+						<groupId>org.apache.lucene</groupId>
+						<artifactId>lucene-core</artifactId>
+					</exclusion>
 					<exclusion>
 						<!-- Esclusa perchè non trovata in Maven -->
 						<groupId>org.olap4j</groupId>
@@ -461,11 +461,11 @@
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
-	            <groupId>log4j</groupId>
-	            <artifactId>log4j</artifactId>
-	            <version>${log4j.version}</version>
-	            <scope>provided</scope>
-	        </dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+				<scope>provided</scope>
+			</dependency>
 
 			<!-- Test dependencies -->
 			<dependency>
@@ -694,6 +694,38 @@
 								<goal>update-file-header</goal>
 							</goals>
 							<phase>process-sources</phase>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!--There seems to be a bug in this plugin, that resources cannot be overriden ! So be careful what you minify -->
+					<groupId>net.alchim31.maven</groupId>
+					<artifactId>yuicompressor-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>compress-js</id>
+							<goals>
+								<goal>compress</goal>
+							</goals>
+							<configuration>
+                                <excludes>
+                                    <exclude>**/webscripts/**</exclude>
+                                    <exclude>**/site-webscripts/**</exclude>
+                                    <exclude>**/*.lib.js</exclude>
+                                    <exclude>**/*.css</exclude>
+									
+									<!-- Openway - Custom code -->
+									<!-- Specializzazione rispetto alla configurazione dell'SDK di Alfresco -->
+                                    <exclude>alfresco/**/*.*</exclude>
+									<exclude>**/*-min.js</exclude>
+									<!-- END - Openway - Custom code -->
+                                </excludes>
+                                <sourceDirectory>src/main/amp</sourceDirectory>
+                                <outputDirectory>${project.build.directory}/amp</outputDirectory>
+                                <!-- Exclude resources so we don't get an extra dir structure with -min.js files -->
+                                <excludeResources>true</excludeResources>
+                                <jswarn>false</jswarn>
+                            </configuration>
 						</execution>
 					</executions>
 				</plugin>
