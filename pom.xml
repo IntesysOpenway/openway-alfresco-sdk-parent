@@ -641,11 +641,6 @@
 							<artifactId>h2</artifactId>
 							<version>${h2.version}</version>
 						</dependency>
-						<dependency>
-							<groupId>tk.skuro.alfresco</groupId>
-							<artifactId>h2-support</artifactId>
-							<version>${h2-support.version}</version>
-						</dependency>
 						<!-- Major performance improvement, see http://mindthegab.com/2013/06/20/maven-is-not-so-evil-plexus-archives-2-3-is-a-life-saver-for-the-speed-of-your-war-development-with-maven/ -->
 						<dependency>
 							<groupId>org.codehaus.plexus</groupId>
