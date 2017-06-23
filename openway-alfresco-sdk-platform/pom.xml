@@ -15,5 +15,50 @@
 
 	<properties>
 	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${alfresco.groupId}</groupId>
+				<artifactId>alfresco-platform-distribution</artifactId>
+				<version>${alfresco.platform.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+	<dependencies>
+		<!-- The main Alfresco Repo dependency for compiling Java code in src/main/java -->
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>alfresco-repository</artifactId>
+		</dependency>
+
+		<!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
+		<dependency>
+			<groupId>org.alfresco.maven</groupId>
+			<artifactId>alfresco-rad</artifactId>
+			<version>${alfresco.sdk.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Bring in Spring Context so we can use ApplicationContext, ApplicationContextAware etc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.2.17.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Integration tests need httpcomponents to execute tests -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
 
 </project>

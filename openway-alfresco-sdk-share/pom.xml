@@ -15,5 +15,25 @@
 
 	<properties>
 	</properties>
+	
+	<dependencyManagement />
+	
+	<dependencies>
+		<!-- Following dependencies are needed for compiling Java code in src/main/java -->
+		<dependency>
+			<groupId>${alfresco.groupId}</groupId>
+			<artifactId>share</artifactId>
+			<version>${alfresco.share.version}</version>
+			<classifier>classes</classifier>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.alfresco.surf</groupId>
+			<artifactId>spring-surf-api</artifactId>
+			<version>${alfresco.surf.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 </project>
