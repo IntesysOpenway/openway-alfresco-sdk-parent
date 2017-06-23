@@ -14,6 +14,10 @@
 	<description>Base di sviluppo per un progetto Openway Alfresco basato su Alfresco Maven SDK 3.0.0 - Modulo per la definizione delle dipendenze share</description>
 
 	<properties>
+		
+		<!-- Alfresco Surf version, if you change Share version you might need to change Surf version -->
+		<alfresco.surf.version>6.11</alfresco.surf.version>
+	
 	</properties>
 	
 	<dependencyManagement />

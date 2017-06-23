@@ -22,6 +22,9 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
+		<!-- Properties used in dependency declarations, you don't need to change these -->
+		<alfresco.groupId>org.alfresco</alfresco.groupId>
+		
 		<alfresco.platform.version>5.1.g</alfresco.platform.version>
 		<alfresco.share.version>5.1.f</alfresco.share.version>
 		
@@ -55,10 +58,6 @@
 	</distributionManagement>
 
 	<build>
-	
-		
-	
-	
 	</build>
 
 	<modules>
