@@ -21,19 +21,19 @@
 		<alfresco.sdk.version>3.0.0</alfresco.sdk.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
+
 		<!-- Properties used in dependency declarations, you don't need to change these -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		
+
 		<alfresco.platform.version>5.1.g</alfresco.platform.version>
 		<alfresco.share.version>5.1.f</alfresco.share.version>
-		
+
 		<!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
 		<maven.alfresco.edition>community</maven.alfresco.edition>
-		
+
 		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
 		<jrebel.version>1.1.6</jrebel.version>
-		
+
 		<!-- Compile with Java 7, default is 5 -->
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
@@ -59,6 +59,98 @@
 
 	<build>
 	</build>
+
+	<profiles>
+		<!-- Profilo attivato ogni volta che la property obfuscate=true. I sorgenti vengono offuscati con proguard. -->
+		<profile>
+			<id>iopenway-obfuscate-profile</id>
+			<activation>
+				<property>
+					<name>obfuscate</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<!-- In caso di offuscamento faccio pescare le classi compilate nella cartella dove sono gia' state offuscate. -->
+						<plugin>
+							<groupId>org.alfresco.maven.plugin</groupId>
+							<artifactId>alfresco-maven-plugin</artifactId>
+							<extensions>true</extensions>
+							<configuration combine.children="append">
+								<classesDirectory>${project.build.directory}/classes-ob</classesDirectory>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>com.github.wvengen</groupId>
+						<artifactId>proguard-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>proguard</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<options combine.children="append">
+								<option>-injar ${project.build.directory}/classes/</option>
+								<option>-outjar ${project.build.directory}/classes-ob/</option>
+								<option>-renamesourcefileattribute SourceFile</option>
+								<option>-keepparameternames</option>
+								<option>-keepattributes
+									Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,
+									*Annotation*,EnclosingMethod,!LocalVariableTable,!LocalVariableTypeTable</option>
+								<option>-keep public class * { public protected *;}</option>
+								<!-- Preserve all getter and setter -->
+								<option>-keep class * {
+									void set*(***);
+									void set*(int, ***);
+									boolean is*();
+									boolean is*(int);
+									*** get*();
+									*** get*(int);
+									}</option>
+								<!-- <option><![CDATA[-keep public class * { public protected *;}]]></option> -->
+								<!-- Utile per javaDoc -->
+								<option>-keepclassmembernames
+									class * {
+									java.lang.Class
+									class$(java.lang.String);
+									java.lang.Class
+									class$(java.lang.String, boolean);}</option>
+								<!-- Enumerazioni -->
+								<option>-keepclassmembers
+									enum * {
+									public static **[] values();
+									public static **
+									valueOf(java.lang.String);}</option>
+								<!-- Serializzazioni -->
+								<option>-keepclassmembers
+									class * implements java.io.Serializable
+									{
+									static final long serialVersionUID;
+									private static final
+									java.io.ObjectStreamField[]
+									serialPersistentFields;
+									private void
+									writeObject(java.io.ObjectOutputStream);
+									private void
+									readObject(java.io.ObjectInputStream);
+									java.lang.Object
+									writeReplace();
+									java.lang.Object readResolve();}</option>
+							</options>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<modules>
 		<module>openway-alfresco-sdk-platform</module>
