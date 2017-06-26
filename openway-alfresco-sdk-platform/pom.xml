@@ -14,8 +14,44 @@
 	<description>Base di sviluppo per un progetto Openway Alfresco basato su Alfresco Maven SDK 3.0.0 - Modulo per la definizione delle dipendenze platform (Alfresco)</description>
 
 	<properties>
+		<spring.version>3.2.17.RELEASE</spring.version>
+		<httpclient.version>4.5.2</httpclient.version>
+
+		<jasperreports.version>5.6.1</jasperreports.version>
+		<jasperreports-fonts.version>5.6.1</jasperreports-fonts.version>
+		<jasperreports-functions.version>5.6.1</jasperreports-functions.version>
+		<barcode4j.version>2.1</barcode4j.version>
+		<barbecue.version>1.5-beta1</barbecue.version>
+		<javax.mail.version>1.5.2</javax.mail.version>
+		<activation.version>1.1</activation.version>
+		<flying-saucer-pdf.version>9.0.2</flying-saucer-pdf.version>
+		<flying-saucer-core.version>9.0.2</flying-saucer-core.version>
+		<itextpdf.version>5.5.5</itextpdf.version>
+		<itext-pdfa.version>5.5.5</itext-pdfa.version>
+		<itext.version>2.1.7</itext.version>
+		<bcprov-jdk15.version>1.45</bcprov-jdk15.version>
+		<bcmail-jdk15.version>1.45</bcmail-jdk15.version>
+		<bcprov-ext-jdk15.version>1.45</bcprov-ext-jdk15.version>
+		<truelicense-core.version>1.33</truelicense-core.version>
+		<truelicense-xml.version>1.33</truelicense-xml.version>
+		<poi.version>3.10.1-20151016-alfresco-patched</poi.version>
+		<batik-all.version>1.6</batik-all.version>
+		<fop.version>0.94</fop.version>
+		<xalan.version>2.7.2-alfresco</xalan.version>
+		<ghost4j.version>0.5.1</ghost4j.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-collections.version>3.2.2</commons-collections.version>
+		<commons-io.version>2.4</commons-io.version>
+		<xstream.version>1.2.2</xstream.version>
+		<xpp3.version>1.1.3_8</xpp3.version>
+		<zxing.version>3.2.0</zxing.version>
+		<mybatis.version>3.2.7</mybatis.version>
+		<log4j.version>1.2.17</log4j.version>
+		<junit.version>4.12</junit.version>
+		<postgresql.version>9.1-901.jdbc4</postgresql.version>
+		<spring-webscripts.version>6.5</spring-webscripts.version>
 	</properties>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -25,9 +61,354 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<!-- Other dependencies -->
+			<dependency>
+				<groupId>net.sf.jasperreports</groupId>
+				<artifactId>jasperreports</artifactId>
+				<version>${jasperreports.version}</version>
+				<exclusions>
+					<!-- Provided da Alfresco -->
+					<exclusion>
+						<groupId>commons-beanutils</groupId>
+						<artifactId>commons-beanutils</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-collections</groupId>
+						<artifactId>commons-collections</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-digester</groupId>
+						<artifactId>commons-digester</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>jackson-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>jackson-databind</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>jackson-annotations</artifactId>
+					</exclusion>
+
+					<!-- Escluse per conflitto con altri nostri software -->
+					<exclusion>
+						<groupId>bouncycastle</groupId>
+						<artifactId>bcmail-jdk14</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>bouncycastle</groupId>
+						<artifactId>bcprov-jdk14</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>bouncycastle</groupId>
+						<artifactId>bctsp-jdk14</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.lucene</groupId>
+						<artifactId>lucene-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<!-- Esclusa perchè non trovata in Maven -->
+						<groupId>org.olap4j</groupId>
+						<artifactId>olap4j</artifactId>
+					</exclusion>
+
+					<!-- Esclusa perche' genera dei problemi di Alfresco. In caso di necessita' eseguire vari test -->
+					<exclusion>
+						<groupId>org.apache.lucene</groupId>
+						<artifactId>lucene-analyzers-common</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.jasperreports</groupId>
+				<artifactId>jasperreports-fonts</artifactId>
+				<version>${jasperreports-fonts.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.jasperreports</groupId>
+				<artifactId>jasperreports-functions</artifactId>
+				<version>${jasperreports-functions.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>joda-time</groupId>
+						<artifactId>joda-time</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.barcode4j</groupId>
+				<artifactId>barcode4j</artifactId>
+				<version>${barcode4j.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>avalon-framework</groupId>
+						<artifactId>avalon-framework-impl</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>net.sourceforge.barbecue</groupId>
+				<artifactId>barbecue</artifactId>
+				<version>${barbecue.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.mail</groupId>
+				<artifactId>javax.mail</artifactId>
+				<version>${javax.mail.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.activation</groupId>
+				<artifactId>activation</artifactId>
+				<version>${activation.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.xhtmlrenderer</groupId>
+				<artifactId>flying-saucer-pdf</artifactId>
+				<version>${flying-saucer-pdf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.xhtmlrenderer</groupId>
+				<artifactId>flying-saucer-core</artifactId>
+				<version>${flying-saucer-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.itextpdf</groupId>
+				<artifactId>itextpdf</artifactId>
+				<version>${itextpdf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.itextpdf</groupId>
+				<artifactId>itext-pdfa</artifactId>
+				<version>${itext-pdfa.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.lowagie</groupId>
+				<artifactId>itext</artifactId>
+				<version>${itext.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.bouncycastle</groupId>
+						<artifactId>bcmail-jdk14</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.bouncycastle</groupId>
+						<artifactId>bcprov-jdk14</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>bouncycastle</groupId>
+						<artifactId>bcprov-jdk14</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-jdk15</artifactId>
+				<version>${bcprov-jdk15.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcmail-jdk15</artifactId>
+				<version>${bcmail-jdk15.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcprov-ext-jdk15</artifactId>
+				<version>${bcprov-ext-jdk15.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.schlichtherle.truelicense</groupId>
+				<artifactId>truelicense-core</artifactId>
+				<version>${truelicense-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.schlichtherle.truelicense</groupId>
+				<artifactId>truelicense-xml</artifactId>
+				<version>${truelicense-xml.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-codec</groupId>
+						<artifactId>commons-codec</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${poi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-scratchpad</artifactId>
+				<version>${poi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-all</artifactId>
+				<version>${batik-all.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xmlgraphics</groupId>
+				<artifactId>fop</artifactId>
+				<version>${fop.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>xalan</groupId>
+				<artifactId>xalan</artifactId>
+				<version>${xalan.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.ghost4j</groupId>
+				<artifactId>ghost4j</artifactId>
+				<version>${ghost4j.version}</version>
+				<classifier>iow-patched</classifier>
+				<exclusions>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-beanutils</groupId>
+						<artifactId>commons-beanutils</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.xmlgraphics</groupId>
+						<artifactId>xmlgraphics-commons</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>${xstream.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>xpp3</groupId>
+				<artifactId>xpp3</artifactId>
+				<version>${xpp3.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>${zxing.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>${zxing.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			
+			<!-- Test dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.alfresco.surf</groupId>
+				<artifactId>spring-webscripts</artifactId>
+				<version>${spring-webscripts.version}</version>
+				<classifier>tests</classifier>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.alfresco</groupId>
+				<artifactId>alfresco-repository</artifactId>
+				<version>${alfresco.platform.version}</version>
+				<classifier>tests</classifier>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql.version}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<!-- The main Alfresco Repo dependency for compiling Java code in src/main/java -->
 		<dependency>
@@ -47,7 +428,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.2.17.RELEASE</version>
+			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -55,10 +436,9 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
+			<version>${httpclient.version}</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 </project>

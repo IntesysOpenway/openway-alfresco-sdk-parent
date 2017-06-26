@@ -38,6 +38,12 @@
 			<version>${alfresco.surf.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.alfresco.surf</groupId>
+			<artifactId>spring-surf</artifactId>
+			<scope>provided</scope>
+			<version>${alfresco.surf.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>
