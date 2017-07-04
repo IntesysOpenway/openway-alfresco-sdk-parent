@@ -54,13 +54,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>${alfresco.groupId}</groupId>
-				<artifactId>alfresco-platform-distribution</artifactId>
-				<version>${alfresco.platform.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
 
 			<!-- Other dependencies -->
 			<dependency>
@@ -404,22 +397,6 @@
 				<groupId>postgresql</groupId>
 				<artifactId>postgresql</artifactId>
 				<version>${postgresql.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<!-- Bring in Alfresco RAD so we get access to AlfrescoTestRunner classes -->
-			<dependency>
-				<groupId>org.alfresco.maven</groupId>
-				<artifactId>alfresco-rad</artifactId>
-				<version>${alfresco.sdk.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<!-- Bring in Spring Context so we can use ApplicationContext, ApplicationContextAware etc -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
 				<scope>test</scope>
 			</dependency>
 
