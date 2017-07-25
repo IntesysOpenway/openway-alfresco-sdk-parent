@@ -45,6 +45,8 @@
 		<jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
 		<mybatis-generator-maven-plugin.version>1.3.3</mybatis-generator-maven-plugin.version>
 		<license-maven-plugin.version>1.12</license-maven-plugin.version>
+		
+		<obfuscate>true</obfuscate>
 	</properties>
 
 	<scm>
@@ -233,7 +235,7 @@
 					<configuration>
 						<tagBase>${scm-project-tag.url}</tagBase>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
+						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none</arguments>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -249,7 +251,7 @@
 							<hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
 						</flowInitContext>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
+						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none</arguments>
 					</configuration>
 				</plugin>
 				<plugin>
