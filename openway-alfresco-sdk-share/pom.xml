@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.iopenway</groupId>
+		<artifactId>openway-alfresco-sdk-parent</artifactId>
+		<version>5.1.6.10</version>
+	</parent>
+
+	<artifactId>openway-alfresco-sdk-share</artifactId>
+	<packaging>pom</packaging>
+
+	<name>OpenWay Alfresco SDK - Share</name>
+	<description>Base di sviluppo per un progetto Openway Alfresco basato su Alfresco Maven SDK 3.0.0 - Modulo per la definizione delle dipendenze share</description>
+
+	<properties>
+
+		<!-- Alfresco Surf version, if you change Share version you might need to change Surf version -->
+		<alfresco.surf.version>6.11</alfresco.surf.version>
+
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${alfresco.groupId}</groupId>
+				<artifactId>share</artifactId>
+				<version>${alfresco.share.version}</version>
+				<classifier>classes</classifier>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.alfresco.surf</groupId>
+				<artifactId>spring-surf-api</artifactId>
+				<version>${alfresco.surf.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.alfresco.surf</groupId>
+				<artifactId>spring-surf</artifactId>
+				<scope>provided</scope>
+				<version>${alfresco.surf.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

@@ -1,15 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.alfresco.maven</groupId>
-		<artifactId>alfresco-sdk-parent</artifactId>
-		<version>2.2.0</version>
-	</parent>
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>5.1.6.10-SNAPSHOT</version>
+	<version>5.1.6.10</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -22,60 +17,36 @@
 
 	<properties>
 
-		<!-- Alfresco SDK Properties -->
-		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.version>5.1.g</alfresco.version>
-		<share.version>5.1.f</share.version>
-		<module.repo.version.min>5.1.0</module.repo.version.min>
-		<app.log.root.level>WARN</app.log.root.level>
+		<!-- Alfresco Maven Plugin version to use -->
+		<alfresco.sdk.version>3.0.0</alfresco.sdk.version>
 
-		<!-- Artifacts Version -->
-		<junit.version>4.12</junit.version>
-		<jasperreports.version>5.6.1</jasperreports.version>
-		<jasperreports-fonts.version>5.6.1</jasperreports-fonts.version>
-		<jasperreports-functions.version>5.6.1</jasperreports-functions.version>
-		<spring-webscripts.version>6.5</spring-webscripts.version>
-		<javax.mail.version>1.5.2</javax.mail.version>
-		<activation.version>1.1</activation.version>
-		<flying-saucer-pdf.version>9.0.2</flying-saucer-pdf.version>
-		<flying-saucer-core.version>9.0.2</flying-saucer-core.version>
-		<itextpdf.version>5.5.5</itextpdf.version>
-		<itext-pdfa.version>5.5.5</itext-pdfa.version>
-		<itext.version>2.1.7</itext.version>
-		<bcprov-jdk15.version>1.45</bcprov-jdk15.version>
-		<bcmail-jdk15.version>1.45</bcmail-jdk15.version>
-		<bcprov-ext-jdk15.version>1.45</bcprov-ext-jdk15.version>
-		<truelicense-core.version>1.33</truelicense-core.version>
-		<truelicense-xml.version>1.33</truelicense-xml.version>
-		<poi.version>3.10.1-20151016-alfresco-patched</poi.version>
-		<batik-all.version>1.6</batik-all.version>
-		<fop.version>0.94</fop.version>
-		<xalan.version>2.7.2-alfresco</xalan.version>
-		<ghost4j.version>0.5.1</ghost4j.version>
-		<postgresql.version>9.1-901.jdbc4</postgresql.version>
-		<commons-lang.version>2.6</commons-lang.version>
-		<commons-collections.version>3.2.2</commons-collections.version>
-		<commons-io.version>2.4</commons-io.version>
-		<xstream.version>1.2.2</xstream.version>
-		<xpp3.version>1.1.3_8</xpp3.version>
-		<dependency.surf.version>6.3</dependency.surf.version>
-		<spring.version>3.2.14.RELEASE</spring.version>
-		<barcode4j.version>2.1</barcode4j.version>
-		<barbecue.version>1.5-beta1</barbecue.version>
-		<zxing.version>3.2.0</zxing.version>
-		<mybatis.version>3.2.7</mybatis.version>
-		<log4j.version>1.2.17</log4j.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Properties used in dependency declarations, you don't need to change these -->
+		<alfresco.groupId>org.alfresco</alfresco.groupId>
+
+		<alfresco.platform.version>5.1.g</alfresco.platform.version>
+		<alfresco.share.version>5.1.f</alfresco.share.version>
+
+		<!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
+		<maven.alfresco.edition>community</maven.alfresco.edition>
+
+		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
+		<jrebel.version>1.1.6</jrebel.version>
+
+		<!-- Compile with Java 7, default is 5 -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 
 		<!-- Plugins Version -->
-		<assembly-plugin.version>2.6</assembly-plugin.version>
-		<shade-plugin.version>2.4.3</shade-plugin.version>
-		<release-plugin.version>2.5.3</release-plugin.version>
-		<maven-scm-plugin.version>1.9.5</maven-scm-plugin.version>
 		<proguard-plugin.version>2.0.12</proguard-plugin.version>
-		<maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
+		<maven-scm-plugin.version>1.9.5</maven-scm-plugin.version>
+		<release-plugin.version>2.5.3</release-plugin.version>
+		<jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
 		<mybatis-generator-maven-plugin.version>1.3.3</mybatis-generator-maven-plugin.version>
 		<license-maven-plugin.version>1.12</license-maven-plugin.version>
-		<jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
+		
+		<obfuscate>true</obfuscate>
 	</properties>
 
 	<scm>
@@ -95,420 +66,139 @@
 		</repository>
 	</distributionManagement>
 
-	<dependencyManagement>
-		<dependencies>
-
-			<!-- Alfresco SDK dependecies -->
-			<dependency>
-				<groupId>${alfresco.groupId}</groupId>
-				<artifactId>alfresco-platform-distribution</artifactId>
-				<version>${alfresco.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>${alfresco.groupId}</groupId>
-				<artifactId>alfresco-web-framework-commons</artifactId>
-				<version>${share.version}</version>
-				<classifier>classes</classifier>
-				<scope>provided</scope>
-				<exclusions>
-					<exclusion>
-						<groupId>org.alfresco.surf</groupId>
-						<artifactId>spring-surf</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.alfresco.surf</groupId>
-						<artifactId>spring-surf-api</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>${alfresco.groupId}</groupId>
-				<artifactId>share</artifactId>
-				<version>${share.version}</version>
-				<classifier>classes</classifier>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<!-- Workarround: org.alfresco:share:5.1.f genera dei problemi quando incluso; devo forzare il management di questa dipendenza -->
-				<groupId>org.alfresco.surf</groupId>
-				<artifactId>spring-surf-api</artifactId>
-				<scope>provided</scope>
-				<version>${dependency.surf.version}</version>
-			</dependency>
-			<dependency>
-				<!-- Workarround: org.alfresco:share:5.1.f genera dei problemi quando incluso; devo forzare il management di questa dipendenza -->
-				<groupId>org.alfresco.surf</groupId>
-				<artifactId>spring-surf</artifactId>
-				<scope>provided</scope>
-				<version>${dependency.surf.version}</version>
-			</dependency>
-
-			<!-- Other dependencies -->
-			<dependency>
-				<groupId>net.sf.jasperreports</groupId>
-				<artifactId>jasperreports</artifactId>
-				<version>${jasperreports.version}</version>
-				<exclusions>
-					<!-- Provided da Alfresco -->
-					<exclusion>
-						<groupId>commons-beanutils</groupId>
-						<artifactId>commons-beanutils</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-collections</groupId>
-						<artifactId>commons-collections</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-digester</groupId>
-						<artifactId>commons-digester</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-logging</groupId>
-						<artifactId>commons-logging</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>xml-apis</groupId>
-						<artifactId>xml-apis</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>com.fasterxml.jackson.core</groupId>
-						<artifactId>jackson-core</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>com.fasterxml.jackson.core</groupId>
-						<artifactId>jackson-databind</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>com.fasterxml.jackson.core</groupId>
-						<artifactId>jackson-annotations</artifactId>
-					</exclusion>
-
-					<!-- Escluse per conflitto con altri nostri software -->
-					<exclusion>
-						<groupId>bouncycastle</groupId>
-						<artifactId>bcmail-jdk14</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>bouncycastle</groupId>
-						<artifactId>bcprov-jdk14</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>bouncycastle</groupId>
-						<artifactId>bctsp-jdk14</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.lucene</groupId>
-						<artifactId>lucene-core</artifactId>
-					</exclusion>
-					<exclusion>
-						<!-- Esclusa perchè non trovata in Maven -->
-						<groupId>org.olap4j</groupId>
-						<artifactId>olap4j</artifactId>
-					</exclusion>
-
-					<!-- Esclusa perche' genera dei problemi di Alfresco. In caso di necessita' eseguire vari test -->
-					<exclusion>
-						<groupId>org.apache.lucene</groupId>
-						<artifactId>lucene-analyzers-common</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>net.sf.jasperreports</groupId>
-				<artifactId>jasperreports-fonts</artifactId>
-				<version>${jasperreports-fonts.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sf.jasperreports</groupId>
-				<artifactId>jasperreports-functions</artifactId>
-				<version>${jasperreports-functions.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>joda-time</groupId>
-						<artifactId>joda-time</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>net.sf.barcode4j</groupId>
-				<artifactId>barcode4j</artifactId>
-				<version>${barcode4j.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>avalon-framework</groupId>
-						<artifactId>avalon-framework-impl</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-logging</groupId>
-						<artifactId>commons-logging</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>net.sourceforge.barbecue</groupId>
-				<artifactId>barbecue</artifactId>
-				<version>${barbecue.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.alfresco.surf</groupId>
-				<artifactId>spring-webscripts</artifactId>
-				<version>${spring-webscripts.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.sun.mail</groupId>
-				<artifactId>javax.mail</artifactId>
-				<version>${javax.mail.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>javax.activation</groupId>
-				<artifactId>activation</artifactId>
-				<version>${activation.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.xhtmlrenderer</groupId>
-				<artifactId>flying-saucer-pdf</artifactId>
-				<version>${flying-saucer-pdf.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.xhtmlrenderer</groupId>
-				<artifactId>flying-saucer-core</artifactId>
-				<version>${flying-saucer-core.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.itextpdf</groupId>
-				<artifactId>itextpdf</artifactId>
-				<version>${itextpdf.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.itextpdf</groupId>
-				<artifactId>itext-pdfa</artifactId>
-				<version>${itext-pdfa.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.lowagie</groupId>
-				<artifactId>itext</artifactId>
-				<version>${itext.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.bouncycastle</groupId>
-						<artifactId>bcmail-jdk14</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.bouncycastle</groupId>
-						<artifactId>bcprov-jdk14</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>bouncycastle</groupId>
-						<artifactId>bcprov-jdk14</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.bouncycastle</groupId>
-				<artifactId>bcprov-jdk15</artifactId>
-				<version>${bcprov-jdk15.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.bouncycastle</groupId>
-				<artifactId>bcmail-jdk15</artifactId>
-				<version>${bcmail-jdk15.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.bouncycastle</groupId>
-				<artifactId>bcprov-ext-jdk15</artifactId>
-				<version>${bcprov-ext-jdk15.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.schlichtherle.truelicense</groupId>
-				<artifactId>truelicense-core</artifactId>
-				<version>${truelicense-core.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>de.schlichtherle.truelicense</groupId>
-				<artifactId>truelicense-xml</artifactId>
-				<version>${truelicense-xml.version}</version>
-				<exclusions>
-					<exclusion>
-						<groupId>commons-codec</groupId>
-						<artifactId>commons-codec</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml</artifactId>
-				<version>${poi.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi</artifactId>
-				<version>${poi.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-scratchpad</artifactId>
-				<version>${poi.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>batik</groupId>
-				<artifactId>batik-all</artifactId>
-				<version>${batik-all.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.xmlgraphics</groupId>
-				<artifactId>fop</artifactId>
-				<version>${fop.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>xalan</groupId>
-				<artifactId>xalan</artifactId>
-				<version>${xalan.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.ghost4j</groupId>
-				<artifactId>ghost4j</artifactId>
-				<version>${ghost4j.version}</version>
-				<classifier>iow-patched</classifier>
-				<exclusions>
-					<exclusion>
-						<groupId>log4j</groupId>
-						<artifactId>log4j</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>commons-beanutils</groupId>
-						<artifactId>commons-beanutils</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.apache.xmlgraphics</groupId>
-						<artifactId>xmlgraphics-commons</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>${commons-lang.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>commons-collections</groupId>
-				<artifactId>commons-collections</artifactId>
-				<version>${commons-collections.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>${commons-io.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.thoughtworks.xstream</groupId>
-				<artifactId>xstream</artifactId>
-				<version>${xstream.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>xpp3</groupId>
-				<artifactId>xpp3</artifactId>
-				<version>${xpp3.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.google.zxing</groupId>
-				<artifactId>javase</artifactId>
-				<version>${zxing.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.google.zxing</groupId>
-				<artifactId>core</artifactId>
-				<version>${zxing.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis</artifactId>
-				<version>${mybatis.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>${log4j.version}</version>
-				<scope>provided</scope>
-			</dependency>
-
-			<!-- Test dependencies -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.alfresco.surf</groupId>
-				<artifactId>spring-webscripts</artifactId>
-				<version>${spring-webscripts.version}</version>
-				<classifier>tests</classifier>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.alfresco</groupId>
-				<artifactId>alfresco-repository</artifactId>
-				<version>${alfresco.version}</version>
-				<classifier>tests</classifier>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>postgresql</groupId>
-				<artifactId>postgresql</artifactId>
-				<version>${postgresql.version}</version>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<artifactId>maven-shade-plugin</artifactId>
-					<version>${shade-plugin.version}</version>
-				</plugin>
+				<!-- Build an AMP if 3rd party libs are needed by the extensions JARs are the default artifact produced in your modules, if you want to build an amp for each 
+					module you have to enable this plugin and inspect the src/main/assembly.xml file if you want to customize the layout of your AMP. The end result is that Maven will 
+					produce both a JAR file and an AMP with your module. -->
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
-					<version>${assembly-plugin.version}</version>
+					<version>2.6</version>
+					<executions>
+						<execution>
+							<id>build-amp-file</id>
+							<phase>package</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+							<configuration>
+								<appendAssemblyId>false</appendAssemblyId>
+								<descriptor>src/main/assembly/amp.xml</descriptor>
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.alfresco.maven.plugin</groupId>
+							<artifactId>alfresco-maven-plugin</artifactId>
+							<version>${alfresco.sdk.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
+
+				<!-- Hot reloading with JRebel -->
+				<!-- 
+					DISABILITATO DA OPENWAY PERCHE' NON USATO
+				<plugin>
+					<groupId>org.zeroturnaround</groupId>
+					<artifactId>jrebel-maven-plugin</artifactId>
+					<version>${jrebel.version}</version>
+					<executions>
+						<execution>
+							<id>generate-rebel-xml</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration> -->
+						<!-- For more information about how to configure JRebel plugin see: http://manuals.zeroturnaround.com/jrebel/standalone/maven.html#maven-rebel-xml -->
+						<!-- <classpath>
+							<fallback>all</fallback>
+							<resources>
+								<resource></resource>
+							</resources>
+						</classpath> -->
+
+						<!-- alwaysGenerate - default is false If 'false' - rebel.xml is generated if timestamps of pom.xml and the current rebel.xml file are not equal. If 'true' 
+							- rebel.xml will always be generated -->
+						<!-- <alwaysGenerate>true</alwaysGenerate>
+					</configuration>
+				</plugin>
+				 -->
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.0.1</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<nonFilteredFileExtensions> <!-- jpg, jpeg, gif, bmp and png are added automatically -->
+							<nonFilteredFileExtension>ftl</nonFilteredFileExtension>
+							<nonFilteredFileExtension>acp</nonFilteredFileExtension>
+							<nonFilteredFileExtension>svg</nonFilteredFileExtension>
+							<nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+							<nonFilteredFileExtension>doc</nonFilteredFileExtension>
+							<nonFilteredFileExtension>docx</nonFilteredFileExtension>
+							<nonFilteredFileExtension>xls</nonFilteredFileExtension>
+							<nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+							<nonFilteredFileExtension>ppt</nonFilteredFileExtension>
+							<nonFilteredFileExtension>pptx</nonFilteredFileExtension>
+							<nonFilteredFileExtension>bin</nonFilteredFileExtension>
+							<nonFilteredFileExtension>lic</nonFilteredFileExtension>
+							<nonFilteredFileExtension>swf</nonFilteredFileExtension>
+							<nonFilteredFileExtension>zip</nonFilteredFileExtension>
+							<nonFilteredFileExtension>msg</nonFilteredFileExtension>
+							<nonFilteredFileExtension>jar</nonFilteredFileExtension>
+							<nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+							<nonFilteredFileExtension>eot</nonFilteredFileExtension>
+							<nonFilteredFileExtension>woff</nonFilteredFileExtension>
+							<nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+							<nonFilteredFileExtension>css</nonFilteredFileExtension>
+							<nonFilteredFileExtension>ico</nonFilteredFileExtension>
+							<nonFilteredFileExtension>psd</nonFilteredFileExtension>
+							<nonFilteredFileExtension>js</nonFilteredFileExtension>
+							<nonFilteredFileExtension>jsfdia</nonFilteredFileExtension>
+							<nonFilteredFileExtension>jasper</nonFilteredFileExtension>
+							<nonFilteredFileExtension>ks</nonFilteredFileExtension>
+						</nonFilteredFileExtensions>
+					</configuration>
+				</plugin>
+
+
+				<!-- Runs the integration tests, any class that follows naming convention "**/IT*.java", "**/*IT.java", and "**/*ITCase.java" will be considered an integration 
+					test -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>2.19.1</version>
+					<executions>
+						<execution>
+							<id>integration-test</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>integration-test</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>verify-test</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>verify</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-junit47</artifactId>
+							<version>2.19.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
 				<plugin>
 					<groupId>com.github.wvengen</groupId>
 					<artifactId>proguard-maven-plugin</artifactId>
@@ -545,7 +235,7 @@
 					<configuration>
 						<tagBase>${scm-project-tag.url}</tagBase>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
+						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none</arguments>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -561,7 +251,7 @@
 							<hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
 						</flowInitContext>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
+						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none</arguments>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -571,101 +261,6 @@
 					<configuration>
 						<connectionType>developerConnection</connectionType>
 					</configuration>
-				</plugin>
-				<plugin>
-					<!-- Above build-helper-maven-plugin gives a validation error in m2e. To fix that, add the plugin management step below. Per: http://stackoverflow.com/a/12109018 -->
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>build-helper-maven-plugin</artifactId>
-										<versionRange>${maven.buildhelper.version}</versionRange>
-										<goals>
-											<goal>add-test-resource</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.alfresco.maven.plugin</groupId>
-										<artifactId>alfresco-maven-plugin</artifactId>
-										<versionRange>[1.1.1,)</versionRange>
-										<goals>
-											<goal>set-version</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-
-				<!-- I file binari non vanno codificati in UTF-8 -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${maven-resources-plugin.version}</version>
-					<configuration>
-						<encoding>${project.build.sourceEncoding}</encoding>
-						<nonFilteredFileExtensions combine.children="append">
-							<nonFilteredFileExtension>jar</nonFilteredFileExtension>
-							<nonFilteredFileExtension>pdf</nonFilteredFileExtension>
-							<nonFilteredFileExtension>swf</nonFilteredFileExtension>
-							<nonFilteredFileExtension>zip</nonFilteredFileExtension>
-							<nonFilteredFileExtension>bz2</nonFilteredFileExtension>
-							<nonFilteredFileExtension>gz</nonFilteredFileExtension>
-							<nonFilteredFileExtension>acp</nonFilteredFileExtension>
-							<nonFilteredFileExtension>bin</nonFilteredFileExtension>
-							<nonFilteredFileExtension>odt</nonFilteredFileExtension>
-							<nonFilteredFileExtension>doc</nonFilteredFileExtension>
-							<nonFilteredFileExtension>xls</nonFilteredFileExtension>
-							<nonFilteredFileExtension>jasper</nonFilteredFileExtension>
-							<nonFilteredFileExtension>ks</nonFilteredFileExtension>
-							<nonFilteredFileExtension>jks</nonFilteredFileExtension>
-							<nonFilteredFileExtension>so</nonFilteredFileExtension>
-							<nonFilteredFileExtension>dll</nonFilteredFileExtension>
-							<nonFilteredFileExtension>jnilib</nonFilteredFileExtension>
-						</nonFilteredFileExtensions>
-					</configuration>
-				</plugin>
-
-				<!-- Configures tomcat with proper deps and performance fixes -->
-				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>${maven.tomcat.version}</version>
-					<configuration>
-						<useSeparateTomcatClassLoader>true</useSeparateTomcatClassLoader>
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>postgresql</groupId>
-							<artifactId>postgresql</artifactId>
-							<version>${postgresql.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>com.h2database</groupId>
-							<artifactId>h2</artifactId>
-							<version>${h2.version}</version>
-						</dependency>
-						<!-- Major performance improvement, see http://mindthegab.com/2013/06/20/maven-is-not-so-evil-plexus-archives-2-3-is-a-life-saver-for-the-speed-of-your-war-development-with-maven/ -->
-						<dependency>
-							<groupId>org.codehaus.plexus</groupId>
-							<artifactId>plexus-archiver</artifactId>
-							<version>2.3</version>
-						</dependency>
-					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.mybatis.generator</groupId>
@@ -721,39 +316,125 @@
 								<goal>compress</goal>
 							</goals>
 							<configuration>
-                                <excludes>
-                                    <exclude>**/webscripts/**</exclude>
-                                    <exclude>**/site-webscripts/**</exclude>
-                                    <exclude>**/*.lib.js</exclude>
-                                    <exclude>**/*.css</exclude>
-									
+								<excludes>
+									<exclude>**/webscripts/**</exclude>
+									<exclude>**/site-webscripts/**</exclude>
+									<exclude>**/*.lib.js</exclude>
+									<exclude>**/*.css</exclude>
+
 									<!-- Openway - Custom code -->
 									<!-- Specializzazione rispetto alla configurazione dell'SDK di Alfresco -->
-                                    <exclude>alfresco/**/*.*</exclude>
+									<exclude>alfresco/**/*.*</exclude>
 									<exclude>**/*-min.js</exclude>
 									<!-- END - Openway - Custom code -->
-                                </excludes>
-                                <sourceDirectory>src/main/amp</sourceDirectory>
-                                <outputDirectory>${project.build.directory}/amp</outputDirectory>
-                                <!-- Exclude resources so we don't get an extra dir structure with -min.js files -->
-                                <excludeResources>true</excludeResources>
-                                <jswarn>false</jswarn>
-                            </configuration>
+								</excludes>
+								<sourceDirectory>src/main/amp</sourceDirectory>
+								<outputDirectory>${project.build.directory}/amp</outputDirectory>
+								<!-- Exclude resources so we don't get an extra dir structure with -min.js files -->
+								<excludeResources>true</excludeResources>
+								<jswarn>false</jswarn>
+							</configuration>
 						</execution>
 					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-			</plugin>
-		</plugins>
 	</build>
+
+	<profiles>
+		<!-- Profilo attivato ogni volta che la property obfuscate=true. I sorgenti vengono offuscati con proguard. -->
+		<profile>
+			<id>iopenway-obfuscate-profile</id>
+			<activation>
+				<property>
+					<name>obfuscate</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<!-- In caso di offuscamento faccio pescare le classi compilate nella cartella dove sono gia' state offuscate. -->
+						<plugin>
+							<groupId>org.alfresco.maven.plugin</groupId>
+							<artifactId>alfresco-maven-plugin</artifactId>
+							<extensions>true</extensions>
+							<configuration combine.children="append">
+								<classesDirectory>${project.build.directory}/classes-ob</classesDirectory>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>com.github.wvengen</groupId>
+						<artifactId>proguard-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>proguard</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<options combine.children="append">
+								<option>-injar ${project.build.directory}/classes/</option>
+								<option>-outjar ${project.build.directory}/classes-ob/</option>
+								<option>-renamesourcefileattribute SourceFile</option>
+								<option>-keepparameternames</option>
+								<option>-keepattributes
+									Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LineNumberTable,
+									*Annotation*,EnclosingMethod,!LocalVariableTable,!LocalVariableTypeTable</option>
+								<option>-keep public class * { public protected *;}</option>
+								<!-- Preserve all getter and setter -->
+								<option>-keep class * {
+									void set*(***);
+									void set*(int, ***);
+									boolean is*();
+									boolean is*(int);
+									*** get*();
+									*** get*(int);
+									}</option>
+								<!-- <option><![CDATA[-keep public class * { public protected *;}]]></option> -->
+								<!-- Utile per javaDoc -->
+								<option>-keepclassmembernames
+									class * {
+									java.lang.Class
+									class$(java.lang.String);
+									java.lang.Class
+									class$(java.lang.String, boolean);}</option>
+								<!-- Enumerazioni -->
+								<option>-keepclassmembers
+									enum * {
+									public static **[] values();
+									public static **
+									valueOf(java.lang.String);}</option>
+								<!-- Serializzazioni -->
+								<option>-keepclassmembers
+									class * implements java.io.Serializable
+									{
+									static final long serialVersionUID;
+									private static final
+									java.io.ObjectStreamField[]
+									serialPersistentFields;
+									private void
+									writeObject(java.io.ObjectOutputStream);
+									private void
+									readObject(java.io.ObjectInputStream);
+									java.lang.Object
+									writeReplace();
+									java.lang.Object readResolve();}</option>
+							</options>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<modules>
+		<module>openway-alfresco-sdk-platform</module>
+		<module>openway-alfresco-sdk-share</module>
+	</modules>
 </project>
