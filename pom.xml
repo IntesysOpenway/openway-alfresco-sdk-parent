@@ -81,8 +81,7 @@
 
 	<scm>
 		<!-- URL to GIT folder that contains this pom -->
-		<developerConnection>scm:git:git@gitlab.intesys.it:openway/openway-alfresco-sdk-parent.git</developerConnection>
-		<tag>openway-alfresco-sdk-parent-5.1.6.9</tag>
+		<developerConnection>scm:git:git@github.com:IntesysOpenway/openway-alfresco-sdk-parent.git</developerConnection>
 	</scm>
 
 	<distributionManagement>
