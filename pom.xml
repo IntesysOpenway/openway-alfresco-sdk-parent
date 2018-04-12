@@ -4,7 +4,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>5.1.6.12-SNAPSHOT</version>
+	<version>5.2.6.12-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -18,15 +18,15 @@
 	<properties>
 
 		<!-- Alfresco Maven Plugin version to use -->
-		<alfresco.sdk.version>3.0.0</alfresco.sdk.version>
+		<alfresco.sdk.version>3.0.1</alfresco.sdk.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Properties used in dependency declarations, you don't need to change these -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 
-		<alfresco.platform.version>5.1.g</alfresco.platform.version>
-		<alfresco.share.version>5.1.f</alfresco.share.version>
+		<alfresco.platform.version>5.2.g</alfresco.platform.version>
+		<alfresco.share.version>5.2.f</alfresco.share.version>
 
 		<!-- Default is to run with a Community edition, change to 'enterprise' if using Enterprise edition -->
 		<maven.alfresco.edition>community</maven.alfresco.edition>
