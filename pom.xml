@@ -9,7 +9,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>5.1.6.9.2-SNAPSHOT</version>
+	<version>5.2.6.9.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -24,9 +24,9 @@
 
 		<!-- Alfresco SDK Properties -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
-		<alfresco.version>5.1.g</alfresco.version>
-		<share.version>5.1.f</share.version>
-		<module.repo.version.min>5.1.0</module.repo.version.min>
+		<alfresco.version>5.2.g</alfresco.version>
+		<share.version>5.2.f</share.version>
+		<module.repo.version.min>5.2.0</module.repo.version.min>
 		<app.log.root.level>WARN</app.log.root.level>
 
 		<!-- Artifacts Version -->
@@ -34,36 +34,36 @@
 		<jasperreports.version>5.6.1</jasperreports.version>
 		<jasperreports-fonts.version>5.6.1</jasperreports-fonts.version>
 		<jasperreports-functions.version>5.6.1</jasperreports-functions.version>
-		<spring-webscripts.version>6.5</spring-webscripts.version>
-		<javax.mail.version>1.5.2</javax.mail.version>
+		<spring-webscripts.version>6.13</spring-webscripts.version>
+		<javax.mail.version>1.5.5</javax.mail.version>
 		<activation.version>1.1</activation.version>
 		<flying-saucer-pdf.version>9.0.2</flying-saucer-pdf.version>
 		<flying-saucer-core.version>9.0.2</flying-saucer-core.version>
 		<itextpdf.version>5.5.5</itextpdf.version>
 		<itext-pdfa.version>5.5.5</itext-pdfa.version>
 		<itext.version>2.1.7</itext.version>
-		<bcprov-jdk15.version>1.45</bcprov-jdk15.version>
-		<bcmail-jdk15.version>1.45</bcmail-jdk15.version>
-		<bcprov-ext-jdk15.version>1.45</bcprov-ext-jdk15.version>
+		<bcprov-jdk15.version>1.46</bcprov-jdk15.version>
+		<bcmail-jdk15.version>1.46</bcmail-jdk15.version>
+		<bcprov-ext-jdk15.version>1.46</bcprov-ext-jdk15.version>
 		<truelicense-core.version>1.33</truelicense-core.version>
 		<truelicense-xml.version>1.33</truelicense-xml.version>
 		<poi.version>3.10.1-20151016-alfresco-patched</poi.version>
-		<batik-all.version>1.6</batik-all.version>
+		<batik-all.version>1.6-1</batik-all.version>
 		<fop.version>0.94</fop.version>
 		<xalan.version>2.7.2-alfresco</xalan.version>
 		<ghost4j.version>0.5.1</ghost4j.version>
-		<postgresql.version>9.1-901.jdbc4</postgresql.version>
+		<postgresql.version>9.4.1212</postgresql.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-collections.version>3.2.2</commons-collections.version>
 		<commons-io.version>2.4</commons-io.version>
 		<xstream.version>1.2.2</xstream.version>
-		<xpp3.version>1.1.3_8</xpp3.version>
-		<dependency.surf.version>6.3</dependency.surf.version>
-		<spring.version>3.2.14.RELEASE</spring.version>
+		<xpp3.version>1.3.1</xpp3.version>
+		<dependency.surf.version>6.13</dependency.surf.version>
+		<spring.version>3.2.17.RELEASE</spring.version>
 		<barcode4j.version>2.1</barcode4j.version>
 		<barbecue.version>1.5-beta1</barbecue.version>
 		<zxing.version>3.2.0</zxing.version>
-		<mybatis.version>3.2.7</mybatis.version>
+		<mybatis.version>3.3.0</mybatis.version>
 		<log4j.version>1.2.17</log4j.version>
 
 		<!-- Plugins Version -->
