@@ -4,7 +4,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>5.2.6.13-SNAPSHOT</version>
+	<version>5.2.6.14-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
