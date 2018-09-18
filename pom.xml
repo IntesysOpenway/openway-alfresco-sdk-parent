@@ -9,7 +9,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>5.2.6.9.5-SNAPSHOT</version>
+	<version>5.2.6.9.5</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -83,7 +83,7 @@
 	<scm>
 		<!-- URL to GIT folder that contains this pom -->
 		<developerConnection>scm:git:git@github.com:IntesysOpenway/openway-alfresco-sdk-parent.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>openway-alfresco-sdk-parent-5.2.6.9.5</tag>
   </scm>
 
 	<distributionManagement>
