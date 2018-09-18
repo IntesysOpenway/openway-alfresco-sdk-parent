@@ -49,7 +49,6 @@
 		<mybatis-spring.version>1.2.5</mybatis-spring.version>
 		<log4j.version>1.2.17</log4j.version>
 		<junit.version>4.12</junit.version>
-		<postgresql.version>9.4.1212</postgresql.version>
 		<spring-webscripts.version>6.13</spring-webscripts.version>
 		<servlet-api.version>2.5</servlet-api.version>
 	</properties>
@@ -491,8 +490,8 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>postgresql</groupId>
-				<artifactId>postgresql</artifactId>
+				<groupId>org.postgresql</groupId>
+  				<artifactId>postgresql</artifactId>
 				<version>${postgresql.version}</version>
 				<scope>test</scope>
 			</dependency>
