@@ -581,8 +581,8 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>postgresql</groupId>
-				<artifactId>postgresql</artifactId>
+				<groupId>org.postgresql</groupId>
+  				<artifactId>postgresql</artifactId>
 				<version>${postgresql.version}</version>
 				<scope>test</scope>
 			</dependency>
@@ -741,8 +741,8 @@
 					</configuration>
 					<dependencies>
 						<dependency>
-							<groupId>postgresql</groupId>
-							<artifactId>postgresql</artifactId>
+							<groupId>org.postgresql</groupId>
+  							<artifactId>postgresql</artifactId>
 							<version>${postgresql.version}</version>
 						</dependency>
 						<dependency>
@@ -772,8 +772,8 @@
 					</executions>
 					<dependencies>
 						<dependency>
-							<groupId>postgresql</groupId>
-							<artifactId>postgresql</artifactId>
+							<groupId>org.postgresql</groupId>
+  							<artifactId>postgresql</artifactId>
 							<version>${postgresql.version}</version>
 						</dependency>
 					</dependencies>
