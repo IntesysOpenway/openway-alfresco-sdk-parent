@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>it.iopenway</groupId>
 		<artifactId>openway-alfresco-sdk-parent</artifactId>
-		<version>5.2.6.15-SNAPSHOT</version>
+		<version>5.2.6.16-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>openway-alfresco-sdk-share</artifactId>
