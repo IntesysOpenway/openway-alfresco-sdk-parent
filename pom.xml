@@ -376,8 +376,7 @@
 					<plugins>
 						<!-- In caso di offuscamento faccio pescare le classi compilate nella cartella dove sono gia' state offuscate. -->
 						<plugin>
-							<groupId>org.alfresco.maven.plugin</groupId>
-							<artifactId>alfresco-maven-plugin</artifactId>
+							<artifactId>maven-jar-plugin</artifactId>
 							<extensions>true</extensions>
 							<configuration combine.children="append">
 								<classesDirectory>${project.build.directory}/classes-ob</classesDirectory>
@@ -398,9 +397,10 @@
 							</execution>
 						</executions>
 						<configuration>
+							<injar>/classes/</injar>
+							<injarNotExistsSkip>true</injarNotExistsSkip>
+							<outjar>/classes-ob/</outjar>
 							<options combine.children="append">
-								<option>-injar ${project.build.directory}/classes/</option>
-								<option>-outjar ${project.build.directory}/classes-ob/</option>
 								<option>-renamesourcefileattribute SourceFile</option>
 								<option>-keepparameternames</option>
 								<option>-keepattributes
