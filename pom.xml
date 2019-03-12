@@ -4,7 +4,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>5.2.6.18</version>
+	<version>5.2.6.19</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -62,11 +62,11 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>iopenway</id>
-			<url>http://172.28.13.245:8080/nexus/content/repositories/snapshots/</url>
+			<url>https://maven.iopenway.it/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>iopenway</id>
-			<url>http://172.28.13.245:8080/nexus/content/repositories/releases/</url>
+			<url>https://maven.iopenway.it/repository/releases/</url>
 		</repository>
 	</distributionManagement>
 
