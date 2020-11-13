@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>it.iopenway</groupId>
 		<artifactId>openway-alfresco-sdk-parent</artifactId>
-		<version>5.2.6.20-SNAPSHOT</version>
+		<version>6.2.0.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>openway-alfresco-sdk-platform</artifactId>
@@ -14,6 +14,7 @@
 	<description>Base di sviluppo per un progetto Openway Alfresco basato su Alfresco Maven SDK 3.0.1 - Modulo per la definizione delle dipendenze platform (Alfresco)</description>
 
 	<properties>
+	<!-- 
 		<spring.version>3.2.17.RELEASE</spring.version>
 		<httpclient.version>4.5.2</httpclient.version>
 
@@ -54,18 +55,18 @@
 		<jackson.version>2.8.3</jackson.version>
 		<jackson.jaxb.version>2.3.2</jackson.jaxb.version>
 		<jackson.asl.version>1.9.13</jackson.asl.version>
+	 -->
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-
-			<!-- Other dependencies -->
+			<!--
 			<dependency>
 				<groupId>net.sf.jasperreports</groupId>
 				<artifactId>jasperreports</artifactId>
 				<version>${jasperreports.version}</version>
 				<exclusions>
-					<!-- Provided da Alfresco -->
+					<!- Provided da Alfresco ->
 					<exclusion>
 						<groupId>commons-beanutils</groupId>
 						<artifactId>commons-beanutils</artifactId>
@@ -99,7 +100,7 @@
 						<artifactId>jackson-annotations</artifactId>
 					</exclusion>
 
-					<!-- Escluse per conflitto con altri nostri software -->
+					<!- Escluse per conflitto con altri nostri software ->
 					<exclusion>
 						<groupId>bouncycastle</groupId>
 						<artifactId>bcmail-jdk14</artifactId>
@@ -117,12 +118,12 @@
 						<artifactId>lucene-core</artifactId>
 					</exclusion>
 					<exclusion>
-						<!-- Esclusa perchè non trovata in Maven -->
+						<!- Esclusa perchè non trovata in Maven ->
 						<groupId>org.olap4j</groupId>
 						<artifactId>olap4j</artifactId>
 					</exclusion>
 
-					<!-- Esclusa perche' genera dei problemi di Alfresco. In caso di necessita' eseguire vari test -->
+					<!- Esclusa perche' genera dei problemi di Alfresco. In caso di necessita' eseguire vari test ->
 					<exclusion>
 						<groupId>org.apache.lucene</groupId>
 						<artifactId>lucene-analyzers-common</artifactId>
@@ -534,7 +535,7 @@
 				<scope>provided</scope>
 			</dependency>
 
-			<!-- Test dependencies -->
+			<!- Test dependencies ->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -562,13 +563,14 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- Integration tests need httpcomponents to execute tests -->
+			<!- Integration tests need httpcomponents to execute tests ->
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
 				<version>${httpclient.version}</version>
 				<scope>test</scope>
-			</dependency>
+			</dependency> 
+			 -->
 		</dependencies>
 	</dependencyManagement>
 </project>
