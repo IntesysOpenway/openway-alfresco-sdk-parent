@@ -47,7 +47,7 @@
 		<test.acs.endpoint.path></test.acs.endpoint.path>
 
 		<!-- Plugins Version -->
-		<proguard-plugin.version>2.0.12</proguard-plugin.version>
+		<proguard-plugin.version>2.3.1</proguard-plugin.version>
 		<maven-scm-plugin.version>1.9.5</maven-scm-plugin.version>
 		<release-plugin.version>2.5.3</release-plugin.version>
 		<jgitflow-maven-plugin.version>1.0-m5.1</jgitflow-maven-plugin.version>
@@ -221,29 +221,14 @@
 					<artifactId>proguard-maven-plugin</artifactId>
 					<version>${proguard-plugin.version}</version>
 					<configuration>
-						<proguardVersion>5.3</proguardVersion>
 						<obfuscate>true</obfuscate>
 						<options>
 							<option>-ignorewarnings</option>
 							<option>-dontoptimize</option>
 							<option>-keepdirectories</option>
 						</options>
-						<libs>
-							<lib>${java.home}/lib/rt.jar</lib>
-							<lib>${java.home}/lib/jce.jar</lib>
-							<lib>${java.home}/lib/jsse.jar</lib>
-						</libs>
 						<addMavenDescriptor>false</addMavenDescriptor>
 					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>net.sf.proguard</groupId>
-							<artifactId>proguard-base</artifactId>
-							<version>5.3</version>
-							<scope>runtime</scope>
-							<optional>true</optional>
-						</dependency>
-					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
