@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>it.iopenway</groupId>
 		<artifactId>openway-alfresco-sdk-parent</artifactId>
-		<version>5.2.6.19</version>
+		<version>6.2.0.0</version>
 	</parent>
 
 	<artifactId>openway-alfresco-sdk-share</artifactId>
@@ -14,14 +14,14 @@
 	<description>Base di sviluppo per un progetto Openway Alfresco basato su Alfresco Maven SDK 3.0.1 - Modulo per la definizione delle dipendenze share</description>
 
 	<properties>
-
-		<!-- Alfresco Surf version, if you change Share version you might need to change Surf version -->
-		<alfresco.surf.version>6.11</alfresco.surf.version>
-
+		<!--
+		<alfresco.surf.version>6.11</alfresco.surf.version> 
+		 -->
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+		<!-- 
 			<dependency>
 				<groupId>${alfresco.groupId}</groupId>
 				<artifactId>share</artifactId>
@@ -42,6 +42,7 @@
 				<scope>provided</scope>
 				<version>${alfresco.surf.version}</version>
 			</dependency>
+		 -->
 		</dependencies>
 	</dependencyManagement>
 
