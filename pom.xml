@@ -654,6 +654,7 @@
 						</flowInitContext>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
 						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
+						<enableSshAgent>true</enableSshAgent>
 					</configuration>
 					<dependencies>
 						<!-- Risolve un problema con GitHub su alcuni algoritmi di -->
