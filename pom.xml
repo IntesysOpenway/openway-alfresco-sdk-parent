@@ -256,6 +256,7 @@
 						</flowInitContext>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
 						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none</arguments>
+						<enableSshAgent>true</enableSshAgent>
 					</configuration>
 					<dependencies>
 						<!-- Workaround @see https://ecosystem.atlassian.net/browse/MJF-299 -->
