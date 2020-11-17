@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -83,8 +84,8 @@
 	<scm>
 		<!-- URL to GIT folder that contains this pom -->
 		<developerConnection>scm:git:git@github.com:IntesysOpenway/openway-alfresco-sdk-parent.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<distributionManagement>
 		<snapshotRepository>
@@ -582,7 +583,7 @@
 			</dependency>
 			<dependency>
 				<groupId>org.postgresql</groupId>
-  				<artifactId>postgresql</artifactId>
+				<artifactId>postgresql</artifactId>
 				<version>${postgresql.version}</version>
 				<scope>test</scope>
 			</dependency>
@@ -654,6 +655,15 @@
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
 						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
 					</configuration>
+					<dependencies>
+						<!-- Risolve un problema con GitHub su alcuni algoritmi di -->
+						<!-- crittografia deprecati (https://ecosystem.atlassian.net/browse/MJF-299?oldIssueView=true) -->
+						<dependency>
+							<groupId>com.jcraft</groupId>
+							<artifactId>jsch</artifactId>
+							<version>0.1.54</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -742,7 +752,7 @@
 					<dependencies>
 						<dependency>
 							<groupId>org.postgresql</groupId>
-  							<artifactId>postgresql</artifactId>
+							<artifactId>postgresql</artifactId>
 							<version>${postgresql.version}</version>
 						</dependency>
 						<dependency>
@@ -773,7 +783,7 @@
 					<dependencies>
 						<dependency>
 							<groupId>org.postgresql</groupId>
-  							<artifactId>postgresql</artifactId>
+							<artifactId>postgresql</artifactId>
 							<version>${postgresql.version}</version>
 						</dependency>
 					</dependencies>
@@ -812,34 +822,34 @@
 								<goal>compress</goal>
 							</goals>
 							<configuration>
-                                <excludes>
-                                    <exclude>**/webscripts/**</exclude>
-                                    <exclude>**/site-webscripts/**</exclude>
-                                    <exclude>**/*.lib.js</exclude>
-                                    <exclude>**/*.css</exclude>
-									
+								<excludes>
+									<exclude>**/webscripts/**</exclude>
+									<exclude>**/site-webscripts/**</exclude>
+									<exclude>**/*.lib.js</exclude>
+									<exclude>**/*.css</exclude>
+
 									<!-- Openway - Custom code -->
 									<!-- Specializzazione rispetto alla configurazione dell'SDK di Alfresco -->
-                                    <exclude>alfresco/**/*.*</exclude>
+									<exclude>alfresco/**/*.*</exclude>
 									<exclude>**/*-min.js</exclude>
 									<!-- END - Openway - Custom code -->
-                                </excludes>
-                                <sourceDirectory>src/main/amp</sourceDirectory>
-                                <outputDirectory>${project.build.directory}/amp</outputDirectory>
-                                <!-- Exclude resources so we don't get an extra dir structure with -min.js files -->
-                                <excludeResources>true</excludeResources>
-                                <jswarn>false</jswarn>
-                            </configuration>
+								</excludes>
+								<sourceDirectory>src/main/amp</sourceDirectory>
+								<outputDirectory>${project.build.directory}/amp</outputDirectory>
+								<!-- Exclude resources so we don't get an extra dir structure with -min.js files -->
+								<excludeResources>true</excludeResources>
+								<jswarn>false</jswarn>
+							</configuration>
 						</execution>
 					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-			        <artifactId>maven-javadoc-plugin</artifactId>
-			        <version>${maven-javadoc-plugin.version}</version>
-			        <configuration>
-			        	<doclint>none</doclint>
-			        </configuration>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+					<configuration>
+						<doclint>none</doclint>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
