@@ -5,7 +5,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>6.2.0.0</version>
+	<version>6.2.0.1</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -252,10 +252,12 @@
 							<hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
 						</flowInitContext>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none</arguments>
+						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
+						<enableSshAgent>true</enableSshAgent>
 					</configuration>
 					<dependencies>
-						<!-- Workaround @see https://ecosystem.atlassian.net/browse/MJF-299 -->
+						<!-- Risolve un problema con GitHub su alcuni algoritmi di -->
+						<!-- crittografia deprecati (https://ecosystem.atlassian.net/browse/MJF-299?oldIssueView=true) -->
 						<dependency>
 							<groupId>com.jcraft</groupId>
 							<artifactId>jsch</artifactId>
@@ -421,6 +423,9 @@
 							<injarNotExistsSkip>true</injarNotExistsSkip>
 							<outjar>/classes-ob/</outjar>
 							<options combine.children="append">
+								<!-- per far funzionare Java 11 -->
+								<option>-libraryjars ${java.home}/jmods/java.base.jmod(!**.jar;!module-info.class)</option>
+								
 								<option>-renamesourcefileattribute SourceFile</option>
 								<option>-keepparameternames</option>
 								<option>-keepattributes
