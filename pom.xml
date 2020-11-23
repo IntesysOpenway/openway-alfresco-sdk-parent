@@ -421,6 +421,9 @@
 							<injarNotExistsSkip>true</injarNotExistsSkip>
 							<outjar>/classes-ob/</outjar>
 							<options combine.children="append">
+								<!-- per far funzionare Java 11 -->
+								<option>-libraryjars ${java.home}/jmods/java.base.jmod(!**.jar;!module-info.class)</option>
+								
 								<option>-renamesourcefileattribute SourceFile</option>
 								<option>-keepparameternames</option>
 								<option>-keepattributes
