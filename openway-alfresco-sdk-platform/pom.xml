@@ -51,44 +51,44 @@
 <!-- 		<junit.version>4.12</junit.version> -->
 <!-- 		<spring-webscripts.version>6.13</spring-webscripts.version> -->
 <!-- 		<servlet-api.version>2.5</servlet-api.version> -->
+			<jackson-annotations.version>2.9.9</jackson-annotations.version>
+			<jackson-core.version>2.9.9</jackson-core.version>
+			<jackson-databind.version>2.9.10</jackson-databind.version>
+			<jackson-module-jaxb-annotations.version>2.9.9</jackson-module-jaxb-annotations.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 		
-			<dependency>
-				<groupId>org.alfresco</groupId>
-				<artifactId>alfresco-data-model</artifactId>
-				<scope>provided</scope>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.alfresco</groupId> -->
+<!-- 				<artifactId>alfresco-data-model</artifactId> -->
+<!-- 				<scope>provided</scope> -->
+<!-- 			</dependency> -->
 			
-			<dependency>
-				<groupId>org.alfresco</groupId>
-				<artifactId>alfresco-repository</artifactId>
-				<scope>provided</scope>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.alfresco</groupId> -->
+<!-- 				<artifactId>alfresco-repository</artifactId> -->
+<!-- 				<scope>provided</scope> -->
+<!-- 			</dependency> -->
 
-			<dependency>
-				<groupId>commons-codec</groupId>
-				<artifactId>commons-codec</artifactId>
-				<scope>provided</scope>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>commons-codec</groupId> -->
+<!-- 				<artifactId>commons-codec</artifactId> -->
+<!-- 				<scope>provided</scope> -->
+<!-- 			</dependency> -->
 		
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-collections4</artifactId>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>commons-beanutils</groupId>
-				<artifactId>commons-beanutils</artifactId>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>commons-digester</groupId>
-				<artifactId>commons-digester</artifactId>
-				<scope>provided</scope>
-			</dependency>
+
+<!-- 			<dependency> -->
+<!-- 				<groupId>commons-beanutils</groupId> -->
+<!-- 				<artifactId>commons-beanutils</artifactId> -->
+<!-- 				<scope>provided</scope> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 				<groupId>commons-digester</groupId> -->
+<!-- 				<artifactId>commons-digester</artifactId> -->
+<!-- 				<scope>provided</scope> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-compress</artifactId>
@@ -97,11 +97,6 @@
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
@@ -122,8 +117,40 @@
 				<exclusions>
 					<!-- Escluse perchè presenti in Alfresco -->
 					<exclusion>
+						<groupId>commons-beanutils</groupId>
+		 				<artifactId>commons-beanutils</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.commons</groupId>
+						<artifactId>commons-collections4</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-digester</groupId>
+		 				<artifactId>commons-digester</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.commons</groupId>
+						<artifactId>commons-lang3</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
 						<groupId>org.bouncycastle</groupId>
  							<artifactId>bcprov-jdk15on</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>jackson-annotations</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>jackson-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>jackson-databind</artifactId>
 					</exclusion>
 			
 					<!-- Esclusa perche' genera dei problemi di Alfresco. In caso di necessita' eseguire vari test -->
@@ -143,6 +170,7 @@
 				<artifactId>jasperreports-functions</artifactId>
 				<version>${jasperreports-functions.version}</version>
 				<exclusions>
+					<!-- Escluse perchè presenti in Alfresco -->
 					<exclusion>
 						<groupId>joda-time</groupId>
 						<artifactId>joda-time</artifactId>
@@ -378,6 +406,7 @@
 				<version>${ghost4j.version}</version>
 				<classifier>iow-patched</classifier>
 				<exclusions>
+					<!-- Escluse perchè presenti in Alfresco -->
 					<exclusion>
 						<groupId>log4j</groupId>
 						<artifactId>log4j</artifactId>
@@ -385,6 +414,18 @@
 					<exclusion>
 						<groupId>commons-beanutils</groupId>
 						<artifactId>commons-beanutils</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-io</groupId>
+  						<artifactId>commons-io</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+  						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>net.java.dev.jna</groupId>
+						<artifactId>jna</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -497,27 +538,32 @@
 <!-- 					</exclusion> -->
 <!-- 				</exclusions> -->
 <!-- 			</dependency> -->
+			
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
 				<scope>provided</scope>
+				<version>${jackson-annotations.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
 				<scope>provided</scope>
+				<version>${jackson-core.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
 				<scope>provided</scope>
+				<version>${jackson-databind.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.module</groupId>
 				<artifactId>jackson-module-jaxb-annotations</artifactId>
 				<scope>provided</scope>
+				<version>${jackson-module-jaxb-annotations.version}</version>
 			</dependency>
-
+			
 <!-- 			<!- Test dependencies -> -->
 <!-- 			<dependency> -->
 <!-- 				<groupId>junit</groupId> -->
@@ -553,12 +599,6 @@
 <!-- 				<version>${httpclient.version}</version> -->
 <!-- 				<scope>test</scope> -->
 <!-- 			</dependency>  -->
-
-			<dependency>
-				<groupId>net.java.dev.jna</groupId>
-				<artifactId>jna</artifactId>
-				<scope>provided</scope>
-			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
