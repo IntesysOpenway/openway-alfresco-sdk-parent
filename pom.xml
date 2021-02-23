@@ -88,11 +88,11 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>iopenway</id>
-			<url>http://172.28.13.245:8080/nexus/content/repositories/snapshots/</url>
+     		<url>https://maven.iopenway.it/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
 			<id>iopenway</id>
-			<url>http://172.28.13.245:8080/nexus/content/repositories/releases/</url>
+      		<url>https://maven.iopenway.it/repository/releases/</url>
 		</repository>
 	</distributionManagement>
 
