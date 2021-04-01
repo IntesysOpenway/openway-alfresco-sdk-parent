@@ -5,7 +5,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>6.2.0.3</version>
+	<version>6.2.0.4</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -30,7 +30,7 @@
 		<alfresco.share.version>6.2.0</alfresco.share.version>
 
 		<!-- Docker images -->
-		<docker.acs.image>alfresco/alfresco-content-repository-community</docker.acs.image>
+		<docker.acs.image>docker.iopenway.it/iopenway/alfresco-content-repository-community</docker.acs.image>
 		<docker.share.image>alfresco/alfresco-share</docker.share.image>
 
 		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
