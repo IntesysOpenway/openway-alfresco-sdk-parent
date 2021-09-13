@@ -221,7 +221,7 @@
 					<configuration>
 						<tagBase>${scm-project-tag.url}</tagBase>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none</arguments>
+						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none -D skipTests</arguments>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -237,7 +237,7 @@
 							<hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
 						</flowInitContext>
 						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none</arguments>
+						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none -D skipTests</arguments>
 						<enableSshAgent>true</enableSshAgent>
 					</configuration>
 					<dependencies>
