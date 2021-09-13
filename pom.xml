@@ -5,7 +5,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>6.2.0.4</version>
+	<version>6.2.0.5</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -407,6 +407,7 @@
 							<injar>/classes/</injar>
 							<injarNotExistsSkip>true</injarNotExistsSkip>
 							<outjar>/classes-ob/</outjar>
+							<putLibraryJarsInTempDir>true</putLibraryJarsInTempDir>
 							<options combine.children="append">
 								<!-- per far funzionare Java 11 -->
 								<option>-libraryjars ${java.home}/jmods/java.base.jmod(!**.jar;!module-info.class)</option>
