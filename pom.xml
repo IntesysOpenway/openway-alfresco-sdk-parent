@@ -5,7 +5,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>6.2.0.7-SNAPSHOT</version>
+	<version>7.1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -19,15 +19,16 @@
 	<properties>
 
 		<!-- Alfresco Maven Plugin version to use -->
-		<alfresco.sdk.version>4.1.0</alfresco.sdk.version>
+		<alfresco.sdk.version>4.3.0</alfresco.sdk.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Properties used in dependency declarations, you don't need to change these -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
-		<alfresco.platform.version>6.2.0-ga</alfresco.platform.version>
-		<alfresco.share.version>6.2.0</alfresco.share.version>
+		<alfresco.platform.version>7.1.0</alfresco.platform.version>
+		<alfresco.share.version>11.77</alfresco.share.version>
+		<alfresco.share.docker.version>7.1.0.1</alfresco.share.docker.version>
 
 		<!-- Docker images -->
 		<docker.acs.image>docker.iopenway.it/iopenway/alfresco-content-repository-community</docker.acs.image>
@@ -36,14 +37,27 @@
 		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
 		<jrebel.version>1.1.8</jrebel.version>
 		<!-- Environment configuration properties -->
+		<keystore.settings>
+			-Dencryption.keystore.type=JCEKS
+			-Dencryption.cipherAlgorithm=AES/CBC/PKCS5Padding
+			-Dencryption.keyAlgorithm=AES
+			-Dencryption.keystore.location=/usr/local/tomcat/shared/classes/alfresco/extension/keystore/keystore
+			-Dmetadata-keystore.password=mp6yc0UD9e
+			-Dmetadata-keystore.aliases=metadata
+			-Dmetadata-keystore.metadata.password=oKIWzVdEdA
+			-Dmetadata-keystore.metadata.algorithm=AES
+		</keystore.settings>
+
+		<activemq.version>5.16.3</activemq.version>
+
 		<share.port>8180</share.port>
 		<share.debug.port>9898</share.debug.port>
-		 <!-- TODO <acs.host>openway-archetype-acs</acs.host> -->
+		<!-- TODO <acs.host>openway-archetype-acs</acs.host> -->
 		<acs.port>8080</acs.port>
 		<acs.debug.port>8888</acs.debug.port>
 		<postgres.port>5555</postgres.port>
 		<!-- This parameter is only required for those cases in which ACS is not exposed in http://localhost:8080/alfresco (i.e. Windows Docker) -->
-		<test.acs.endpoint.path />
+		<test.acs.endpoint.path/>
 
 		<!-- Plugins Version -->
 		<proguard-plugin.version>2.3.1</proguard-plugin.version>
@@ -117,6 +131,7 @@
 						</nonFilteredFileExtensions>
 					</configuration>
 				</plugin>
+
 
 				<!-- Compress JavaScript files and store as *-min.js -->
 				<plugin>
@@ -216,48 +231,39 @@
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>${release-plugin.version}</version>
-					<configuration>
-						<tagBase>${scm-project-tag.url}</tagBase>
-						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=${obfuscate} -Dadditionalparam=-Xdoclint:none -D skipTests</arguments>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>external.atlassian.jgitflow</groupId>
-					<artifactId>jgitflow-maven-plugin</artifactId>
-					<version>${jgitflow-maven-plugin.version}</version>
-					<configuration>
-						<flowInitContext>
-							<masterBranchName>master</masterBranchName>
-							<developBranchName>develop</developBranchName>
-							<featureBranchPrefix>feature/</featureBranchPrefix>
-							<releaseBranchPrefix>release/</releaseBranchPrefix>
-							<hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-						</flowInitContext>
-						<!-- Offuscamento attivo e controlli javadoc alleggeriti -->
-						<arguments>-Dobfuscate=true -Dadditionalparam=-Xdoclint:none -D skipTests</arguments>
-						<enableSshAgent>true</enableSshAgent>
-					</configuration>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>3.0.0-M1</version>
+					<executions>
+						<execution>
+							<id>integration-test</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>integration-test</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>verify-test</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>verify</goal>
+							</goals>
+						</execution>
+					</executions>
 					<dependencies>
-						<!-- Risolve un problema con GitHub su alcuni algoritmi di -->
-						<!-- crittografia deprecati (https://ecosystem.atlassian.net/browse/MJF-299?oldIssueView=true) -->
 						<dependency>
-							<groupId>com.jcraft</groupId>
-							<artifactId>jsch</artifactId>
-							<version>0.1.54</version>
+							<groupId>org.apache.maven.surefire</groupId>
+							<artifactId>surefire-junit47</artifactId>
+							<version>3.0.0-M1</version>
 						</dependency>
 					</dependencies>
 				</plugin>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-scm-plugin</artifactId>
-					<version>${maven-scm-plugin.version}</version>
-					<configuration>
-						<connectionType>developerConnection</connectionType>
-					</configuration>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.1.1</version>
 				</plugin>
+
 				<plugin>
 					<groupId>org.mybatis.generator</groupId>
 					<artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -274,7 +280,7 @@
 						<dependency>
 							<groupId>org.postgresql</groupId>
 							<artifactId>postgresql</artifactId>
-							<version>${postgresql.version}</version>
+							<version>42.2.24</version>
 						</dependency>
 					</dependencies>
 				</plugin>
