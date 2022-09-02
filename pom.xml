@@ -5,7 +5,7 @@
 
 	<groupId>it.iopenway</groupId>
 	<artifactId>openway-alfresco-sdk-parent</artifactId>
-	<version>7.1.0.1-SNAPSHOT</version>
+	<version>7.2.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>OpenWay Alfresco SDK parent</name>
@@ -19,16 +19,16 @@
 	<properties>
 
 		<!-- Alfresco Maven Plugin version to use -->
-		<alfresco.sdk.version>4.3.0</alfresco.sdk.version>
+		<alfresco.sdk.version>4.4.0</alfresco.sdk.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Properties used in dependency declarations, you don't need to change these -->
 		<alfresco.groupId>org.alfresco</alfresco.groupId>
 		<alfresco.bomDependencyArtifactId>acs-community-packaging</alfresco.bomDependencyArtifactId>
-		<alfresco.platform.version>7.1.0</alfresco.platform.version>
-		<alfresco.share.version>11.77</alfresco.share.version>
-		<alfresco.share.docker.version>7.1.0.1</alfresco.share.docker.version>
+		<alfresco.platform.version>7.2.0</alfresco.platform.version>
+		<alfresco.share.version>14.96</alfresco.share.version>
+		<alfresco.share.docker.version>7.2.0</alfresco.share.docker.version>
 
 		<!-- Docker images -->
 		<docker.acs.image>docker.iopenway.it/iopenway/alfresco-content-repository-community</docker.acs.image>
