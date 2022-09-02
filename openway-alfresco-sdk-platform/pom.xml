@@ -23,7 +23,7 @@
 		<flying-saucer-core.version>9.1.20</flying-saucer-core.version>
 		<itextpdf.version>5.5.13.2</itextpdf.version>
 		<itext-pdfa.version>5.5.13.2</itext-pdfa.version>
-		<poi.version>4.0.1</poi.version>
+		<poi.version>5.2.1</poi.version>
 		<zxing.version>3.4.1</zxing.version>
 		<jackson-annotations.version>2.9.9</jackson-annotations.version>
 		<jackson-core.version>2.9.9</jackson-core.version>
