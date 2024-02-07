@@ -24,8 +24,8 @@
 <!-- 		<barbecue.version>1.5-beta1</barbecue.version> -->
 <!-- 		<javax.mail.version>1.5.5</javax.mail.version> -->
 <!-- 		<activation.version>1.1</activation.version> -->
-		<flying-saucer-pdf.version>9.1.20</flying-saucer-pdf.version>
-		<flying-saucer-core.version>9.1.20</flying-saucer-core.version>
+		<flying-saucer-pdf.version>9.5.1</flying-saucer-pdf.version>
+		<flying-saucer-core.version>9.5.1</flying-saucer-core.version>
 		<itextpdf.version>5.5.13.2</itextpdf.version>
 		<itext-pdfa.version>5.5.13.2</itext-pdfa.version>
 <!-- 		<itext.version>2.1.7</itext.version> -->
