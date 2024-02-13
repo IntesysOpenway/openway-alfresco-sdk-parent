@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>it.iopenway</groupId>
 		<artifactId>openway-alfresco-sdk-parent</artifactId>
-		<version>6.2.0.8</version>
+		<version>6.2.0.9</version>
 	</parent>
 
 	<artifactId>openway-alfresco-sdk-platform</artifactId>
@@ -14,23 +14,16 @@
 	<description>Base di sviluppo per un progetto Openway Alfresco basato su Alfresco Maven SDK 3.0.1 - Modulo per la definizione delle dipendenze platform (Alfresco)</description>
 
 	<properties>
-<!-- 		<spring.version>3.2.17.RELEASE</spring.version> -->
-<!-- 		<httpclient.version>4.5.2</httpclient.version> -->
-
 		<jasperreports.version>6.16.0</jasperreports.version>
 		<jasperreports-fonts.version>6.16.0</jasperreports-fonts.version>
 		<jasperreports-functions.version>6.16.0</jasperreports-functions.version>
-<!-- 		<barcode4j.version>2.1</barcode4j.version> -->
-<!-- 		<barbecue.version>1.5-beta1</barbecue.version> -->
-<!-- 		<javax.mail.version>1.5.5</javax.mail.version> -->
-<!-- 		<activation.version>1.1</activation.version> -->
+		<activation.version>1.1</activation.version>
 		<flying-saucer-pdf.version>9.5.1</flying-saucer-pdf.version>
 		<flying-saucer-core.version>9.5.1</flying-saucer-core.version>
 		<itextpdf.version>5.5.13.2</itextpdf.version>
 		<itext-pdfa.version>5.5.13.2</itext-pdfa.version>
-<!-- 		<itext.version>2.1.7</itext.version> -->
 <!-- 		<bcprov-jdk15.version>1.46</bcprov-jdk15.version> -->
-<!-- 		<bcmail-jdk15.version>1.46</bcmail-jdk15.version> -->
+		<bcmail-jdk15.version>1.62</bcmail-jdk15.version>
 <!-- 		<bcprov-ext-jdk15.version>1.46</bcprov-ext-jdk15.version> -->
 <!-- 		<truelicense-core.version>1.33</truelicense-core.version> -->
 <!-- 		<truelicense-xml.version>1.33</truelicense-xml.version> -->
@@ -40,7 +33,7 @@
 <!-- 		<xalan.version>2.7.2-alfresco</xalan.version> -->
 		<ghost4j.version>0.5.1</ghost4j.version>
 <!-- 		<commons-lang.version>2.6</commons-lang.version> -->
-<!-- 		<commons-collections.version>3.2.2</commons-collections.version> -->
+		<commons-collections.version>3.2.2</commons-collections.version>
 <!-- 		<commons-io.version>2.4</commons-io.version> -->
 <!-- 		<xstream.version>1.3.1</xstream.version> -->
 <!-- 		<xpp3.version>1.1.3_8</xpp3.version> -->
@@ -56,10 +49,30 @@
 			<jackson-databind.version>2.9.10</jackson-databind.version>
 			<jackson-module-jaxb-annotations.version>2.9.9</jackson-module-jaxb-annotations.version>
 			<jackson-datatype-jsr310.version>2.9.9</jackson-datatype-jsr310.version>
+
+		<camel.version>2.24.1</camel.version>
+		<jjwt.version>0.11.1</jjwt.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-core</artifactId>
+				<version>${camel.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-jackson</artifactId>
+				<version>${camel.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-rabbitmq</artifactId>
+				<version>${camel.version}</version>
+			</dependency>
 		
 <!-- 			<dependency> -->
 <!-- 				<groupId>org.alfresco</groupId> -->
@@ -204,12 +217,12 @@
 <!-- 				<version>${javax.mail.version}</version> -->
 <!-- 				<scope>provided</scope> -->
 <!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>javax.activation</groupId> -->
-<!-- 				<artifactId>activation</artifactId> -->
-<!-- 				<version>${activation.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
+			<dependency>
+				<groupId>javax.activation</groupId>
+				<artifactId>activation</artifactId>
+				<version>${activation.version}</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.xhtmlrenderer</groupId>
 				<artifactId>flying-saucer-pdf</artifactId>
@@ -231,36 +244,17 @@
 				<version>${itext-pdfa.version}</version>
 			</dependency>
 <!-- 			<dependency> -->
-<!-- 				<groupId>com.lowagie</groupId> -->
-<!-- 				<artifactId>itext</artifactId> -->
-<!-- 				<version>${itext.version}</version> -->
-<!-- 				<exclusions> -->
-<!-- 					<exclusion> -->
-<!-- 						<groupId>org.bouncycastle</groupId> -->
-<!-- 						<artifactId>bcmail-jdk14</artifactId> -->
-<!-- 					</exclusion> -->
-<!-- 					<exclusion> -->
-<!-- 						<groupId>org.bouncycastle</groupId> -->
-<!-- 						<artifactId>bcprov-jdk14</artifactId> -->
-<!-- 					</exclusion> -->
-<!-- 					<exclusion> -->
-<!-- 						<groupId>bouncycastle</groupId> -->
-<!-- 						<artifactId>bcprov-jdk14</artifactId> -->
-<!-- 					</exclusion> -->
-<!-- 				</exclusions> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
 <!-- 				<groupId>org.bouncycastle</groupId> -->
 <!-- 				<artifactId>bcprov-jdk15</artifactId> -->
 <!-- 				<version>${bcprov-jdk15.version}</version> -->
 <!-- 				<scope>provided</scope> -->
 <!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.bouncycastle</groupId> -->
-<!-- 				<artifactId>bcmail-jdk15</artifactId> -->
-<!-- 				<version>${bcmail-jdk15.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
+			<dependency>
+				<groupId>org.bouncycastle</groupId>
+				<artifactId>bcmail-jdk15on</artifactId>
+				<version>${bcmail-jdk15.version}</version>
+				<scope>provided</scope>
+			</dependency>
 <!-- 			<dependency> -->
 <!-- 				<groupId>org.bouncycastle</groupId> -->
 <!-- 				<artifactId>bcprov-ext-jdk15</artifactId> -->
@@ -430,19 +424,19 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>commons-lang</groupId> -->
-<!-- 				<artifactId>commons-lang</artifactId> -->
-<!-- 				<version>${commons-lang.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>commons-collections</groupId> -->
-<!-- 				<artifactId>commons-collections</artifactId> -->
-<!-- 				<version>${commons-collections.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>1.6</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- 			<dependency> -->
 <!-- 				<groupId>commons-io</groupId> -->
 <!-- 				<artifactId>commons-io</artifactId> -->
 <!-- 				<version>${commons-io.version}</version> -->
@@ -539,7 +533,31 @@
 <!-- 					</exclusion> -->
 <!-- 				</exclusions> -->
 <!-- 			</dependency> -->
-			
+
+			<dependency>
+				<groupId>oro</groupId>
+				<artifactId>oro</artifactId>
+				<version>2.0.8</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>2.0.11</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>xerces</groupId>
+				<artifactId>xercesImpl</artifactId>
+				<version>2.11.0-alfresco-patched-20180402</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.findbugs</groupId>
+				<artifactId>jsr305</artifactId>
+				<version>3.0.2</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
@@ -569,8 +587,34 @@
 				<artifactId>jackson-datatype-jsr310</artifactId>
 				<version>${jackson-datatype-jsr310.version}</version>
 			</dependency>
-			
-<!-- 			<!- Test dependencies -> -->
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- JWT -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-api</artifactId>
+				<version>${jjwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-impl</artifactId>
+				<version>${jjwt.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt-jackson</artifactId>
+				<version>${jjwt.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+
+			<!-- 			<!- Test dependencies -> -->
 <!-- 			<dependency> -->
 <!-- 				<groupId>junit</groupId> -->
 <!-- 				<artifactId>junit</artifactId> -->
