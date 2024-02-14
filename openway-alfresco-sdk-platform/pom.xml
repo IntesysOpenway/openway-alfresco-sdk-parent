@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>it.iopenway</groupId>
 		<artifactId>openway-alfresco-sdk-parent</artifactId>
-		<version>6.2.0.9</version>
+		<version>6.2.0.10</version>
 	</parent>
 
 	<artifactId>openway-alfresco-sdk-platform</artifactId>
@@ -32,14 +32,15 @@
 <!-- 		<fop.version>0.94</fop.version> -->
 <!-- 		<xalan.version>2.7.2-alfresco</xalan.version> -->
 		<ghost4j.version>0.5.1</ghost4j.version>
-<!-- 		<commons-lang.version>2.6</commons-lang.version> -->
+		<commons-io.version>2.6</commons-io.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.9</commons-lang3.version>
 		<commons-collections.version>3.2.2</commons-collections.version>
-<!-- 		<commons-io.version>2.4</commons-io.version> -->
 <!-- 		<xstream.version>1.3.1</xstream.version> -->
 <!-- 		<xpp3.version>1.1.3_8</xpp3.version> -->
 		<zxing.version>3.4.1</zxing.version>
-<!-- 		<mybatis.version>3.3.0</mybatis.version> -->
-<!-- 		<mybatis-spring.version>1.2.5</mybatis-spring.version> -->
+		<mybatis.version>3.3.0</mybatis.version>
+		<mybatis-spring.version>1.2.5</mybatis-spring.version>
 <!-- 		<log4j.version>1.2.17</log4j.version> -->
 <!-- 		<junit.version>4.12</junit.version> -->
 <!-- 		<spring-webscripts.version>6.13</spring-webscripts.version> -->
@@ -50,8 +51,10 @@
 			<jackson-module-jaxb-annotations.version>2.9.9</jackson-module-jaxb-annotations.version>
 			<jackson-datatype-jsr310.version>2.9.9</jackson-datatype-jsr310.version>
 
+		<spring.version>5.1.8.RELEASE</spring.version>
 		<camel.version>2.24.1</camel.version>
 		<jjwt.version>0.11.1</jjwt.version>
+		<javax.mail.version>1.6.2</javax.mail.version>
 	</properties>
 
 	<dependencyManagement>
@@ -106,11 +109,6 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-compress</artifactId>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
@@ -211,12 +209,12 @@
 <!-- 				<artifactId>barbecue</artifactId> -->
 <!-- 				<version>${barbecue.version}</version> -->
 <!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>com.sun.mail</groupId> -->
-<!-- 				<artifactId>javax.mail</artifactId> -->
-<!-- 				<version>${javax.mail.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
+			<dependency>
+				<groupId>com.sun.mail</groupId>
+				<artifactId>javax.mail</artifactId>
+				<version>${javax.mail.version}</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
 				<groupId>javax.activation</groupId>
 				<artifactId>activation</artifactId>
@@ -436,12 +434,24 @@
 				<version>${commons-collections.version}</version>
 				<scope>provided</scope>
 			</dependency>
-			<!-- 			<dependency> -->
-<!-- 				<groupId>commons-io</groupId> -->
-<!-- 				<artifactId>commons-io</artifactId> -->
-<!-- 				<version>${commons-io.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+				<scope>provided</scope>
+			</dependency>
 <!-- 			<dependency> -->
 <!-- 				<groupId>com.thoughtworks.xstream</groupId> -->
 <!-- 				<artifactId>xstream</artifactId> -->
@@ -454,24 +464,36 @@
 <!-- 				<version>${xpp3.version}</version> -->
 <!-- 				<scope>provided</scope> -->
 <!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.springframework</groupId> -->
-<!-- 				<artifactId>spring-context</artifactId> -->
-<!-- 				<version>${spring.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.springframework</groupId> -->
-<!-- 				<artifactId>spring-core</artifactId> -->
-<!-- 				<version>${spring.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.springframework</groupId> -->
-<!-- 				<artifactId>spring-beans</artifactId> -->
-<!-- 				<version>${spring.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jcl</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
 			<dependency>
 				<groupId>com.google.zxing</groupId>
 				<artifactId>javase</artifactId>
@@ -482,18 +504,18 @@
 <!-- 				<artifactId>core</artifactId> -->
 <!-- 				<version>${zxing.version}</version> -->
 <!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.mybatis</groupId> -->
-<!-- 				<artifactId>mybatis</artifactId> -->
-<!-- 				<version>${mybatis.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.mybatis</groupId> -->
-<!-- 				<artifactId>mybatis-spring</artifactId> -->
-<!-- 				<version>${mybatis-spring.version}</version> -->
-<!-- 				<scope>provided</scope> -->
-<!-- 			</dependency> -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis-spring.version}</version>
+				<scope>provided</scope>
+			</dependency>
 <!-- 			<dependency> -->
 <!-- 				<groupId>log4j</groupId> -->
 <!-- 				<artifactId>log4j</artifactId> -->
@@ -543,7 +565,7 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>2.0.11</version>
+				<version>1.7.26</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
@@ -611,6 +633,27 @@
 				<artifactId>jjwt-jackson</artifactId>
 				<version>${jjwt.version}</version>
 				<scope>runtime</scope>
+			</dependency>
+
+
+			<dependency>
+				<groupId>com.beust</groupId>
+				<artifactId>jcommander</artifactId>
+				<version>1.35</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>28.0-jre</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jai-imageio</groupId>
+				<artifactId>jai-imageio-core</artifactId>
+				<version>1.4.0</version>
+				<scope>provided</scope>
 			</dependency>
 
 
