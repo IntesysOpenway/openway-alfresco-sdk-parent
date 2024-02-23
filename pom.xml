@@ -65,12 +65,12 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>iopenway</id>
-			<url>https://maven.iopenway.it/repository/snapshots/</url>
+			<id>intesys</id>
+			<url>https://maven.intesys.it/repository/snapshots/</url>
 		</snapshotRepository>
 		<repository>
-			<id>iopenway</id>
-			<url>https://maven.iopenway.it/repository/releases/</url>
+			<id>intesys</id>
+			<url>https://maven.intesys.it/repository/releases/</url>
 		</repository>
 	</distributionManagement>
 
