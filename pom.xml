@@ -31,7 +31,7 @@
 		<alfresco.share.docker.version>7.1.0.1</alfresco.share.docker.version>
 
 		<!-- Docker images -->
-		<docker.acs.image>docker.iopenway.it/iopenway/alfresco-content-repository-community</docker.acs.image>
+		<docker.acs.image>registry.intesys.it/team-ecm/alfresco-content-repository-community</docker.acs.image>
 		<docker.share.image>alfresco/alfresco-share</docker.share.image>
 
 		<!-- JRebel Hot reloading of classpath stuff and web resource stuff -->
