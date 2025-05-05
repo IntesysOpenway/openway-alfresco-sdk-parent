@@ -21,7 +21,7 @@
 		<jasperreports-functions.version>6.16.0</jasperreports-functions.version>
 		<flying-saucer-pdf.version>9.1.20</flying-saucer-pdf.version>
 		<flying-saucer-core.version>9.1.20</flying-saucer-core.version>
-		<itextpdf.version>5.5.13.2</itextpdf.version>
+		<itextpdf.version>5.5.13.3</itextpdf.version>
 		<itext-pdfa.version>5.5.13.2</itext-pdfa.version>
 		<poi.version>4.0.1</poi.version>
 		<zxing.version>3.4.1</zxing.version>
